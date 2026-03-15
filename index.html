@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Prints for Scouting</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #003f87 0%, #00509e 100%);
+            color: white;
+            padding: 2.5rem 2rem 1.5rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Sticky Nav */
+        nav {
+            background: #fff;
+            border-bottom: 2px solid #003f87;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        nav ul li a {
+            display: block;
+            padding: 0.75rem 1.1rem;
+            text-decoration: none;
+            color: #003f87;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: background 0.2s, color 0.2s;
+        }
+        nav ul li a:hover {
+            background: #003f87;
+            color: white;
+        }
+
+        /* Main */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Section */
+        .category {
+            margin-bottom: 2.5rem;
+            scroll-margin-top: 60px;
+        }
+        .category h2 {
+            font-size: 1.4rem;
+            color: #003f87;
+            border-bottom: 3px solid #e8a000;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Card Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .card .card-img {
+            display: block;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        .card .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-body h3 {
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+        .card-body h3 a {
+            color: #003f87;
+            text-decoration: none;
+        }
+        .card-body h3 a:hover {
+            text-decoration: underline;
+        }
+        .card-body .author {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+        .card-body .author a {
+            color: #888;
+            text-decoration: none;
+        }
+        .card-body .author a:hover {
+            color: #003f87;
+            text-decoration: underline;
+        }
+        .card-body p {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.45;
+            flex: 1;
+        }
+        .card-body .note {
+            font-size: 0.8rem;
+            color: #b37400;
+            font-style: italic;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            nav ul li a { padding: 0.6rem 0.75rem; font-size: 0.8rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🔧 3D Prints for Scouting</h1>
+    <p>A curated collection of 3D printable models for Cub Scouts, Scouts BSA, and Wood Badge. All models hosted on MakerWorld. Click any model to view and download.</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#pwd-tools">Derby: Tools &amp; Jigs</a></li>
+        <li><a href="#pwd-trophies">Derby: Trophies</a></li>
+        <li><a href="#rank-badges">Rank Badges</a></li>
+        <li><a href="#rank-statues">Rank Statues</a></li>
+        <li><a href="#woggles">Woggles &amp; Slides</a></li>
+        <li><a href="#wood-badge">Wood Badge</a></li>
+        <li><a href="#skills-camping">Skills &amp; Camping</a></li>
+        <li><a href="#decor">Decor &amp; Display</a></li>
+        <li><a href="#activities">Activities &amp; Fun</a></li>
+        <li><a href="#ceremonies">Ceremonies</a></li>
+    </ul>
+</nav>
+
+<main>
+
+<!-- PINEWOOD DERBY: TOOLS & JIGS -->
+<section class="category" id="pwd-tools">
+    <h2>🏎️ Pinewood Derby: Tools &amp; Jigs</h2>
+    <div class="grid">
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/903665-pinewood-derby-tracers" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US77b6237127c93d/design/2024-12-22_3a5742f460fa4.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Pinewood Derby Tracers">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/903665-pinewood-derby-tracers" target="_blank">Pinewood Derby Tracers</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@AndyMac8" target="_blank">AndyMac8</a></div>
+                <p>Templates that help scouts trace car outlines and key features directly onto their blocks of wood. Great for workshops.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/2407163-pinewood-derby-wheel-speed-chucks" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USb32f7470c7dac6/design/758066566105fd7f.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Pinewood Derby Wheel Speed Chucks">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/2407163-pinewood-derby-wheel-speed-chucks" target="_blank">Wheel Speed Chucks</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@arlowe13" target="_blank">Alex</a></div>
+                <p>Mount standard BSA wheels into a hand drill or drill press for sanding and polishing. Achieves perfectly smooth, race-ready wheels.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1033557-pinewood-derby-axle-insert-brace" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US61820f7f6cfdd3/design/2025-01-24_3e07ed4b5cae6.jpeg?x-oss-process=image/resize,w_1000/format,webp" alt="Pinewood Derby Axle Insert Brace">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1033557-pinewood-derby-axle-insert-brace" target="_blank">Axle Insert Brace</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@ninja_goatee" target="_blank">ninja_goatee</a></div>
+                <p>Jig to support the car body while inserting axles. Includes a version for longer wheelbase cars.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1949433-pinewood-derby-axle-bender" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USef3f3a3f3024/design/2025-10-28_a34770ebfd54a.jpeg?x-oss-process=image/resize,w_1000/format,webp" alt="Pinewood Derby Axle Bender">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1949433-pinewood-derby-axle-bender" target="_blank">Axle Bender</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@calebroylance" target="_blank">calebroylance</a></div>
+                <p>Tool for bending Pinewood Derby axles. Insert an extra axle in the side hole for leverage.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/174119-pinewood-derby-inspection-box" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US17b2dd19e383bc/design/2024-02-06_f93df4368fcde.jpeg?x-oss-process=image/resize,w_1000/format,webp" alt="Pinewood Derby Inspection Box">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/174119-pinewood-derby-inspection-box" target="_blank">Inspection Box</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@OldGregg" target="_blank">Old Gregg</a></div>
+                <p>Check if cars are within tolerance. Inner dimensions sized to the maximum allowable length and width per BSA rules.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/2265644-pinewood-derby-axle-armor" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US6f697e97c64ee8/design/2026-01-18_34966579bbea38.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Pinewood Derby Axle Armor">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/2265644-pinewood-derby-axle-armor" target="_blank">Pinewood Derby Axle Armor</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@RevHazlett" target="_blank">RevHazlett</a></div>
+                <p>Screw-in covers for axle slots. Two sizes (tall 1.6mm and short 1mm). Protects axle slots from damage during handling and transport.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- PINEWOOD DERBY: TROPHIES & AWARDS -->
+<section class="category" id="pwd-trophies">
+    <h2>🏆 Pinewood Derby: Trophies &amp; Awards</h2>
+    <div class="grid">
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/138615-pinewood-derby-trophy-remix" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US3657d4709049c5/design/2024-01-31_fdca1bd03495b.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Pinewood Derby Trophy Remix">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/138615-pinewood-derby-trophy-remix" target="_blank">Trophy Remix (Car Display)</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@Morgus" target="_blank">Morgus</a></div>
+                <p>Trophy design where the winning car sits on top, held in place with a pipe cleaner through the hole.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/43985-pinewood-derby-trophies" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US4eeaa36291e737/design/2023-10-18_wkjpdjghp1e1.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Pinewood Derby Trophies">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/43985-pinewood-derby-trophies" target="_blank">Customizable Trophies</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@Troysterr" target="_blank">Troysterr</a></div>
+                <p>Use the MakerWorld Customize feature to design your own trophy parts and download them. Non-customizable parts available as STL files.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1882812-pinewood-derby-trophy-set" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US297174cc72c10b/design/2025-10-12_41f756a54af18.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Pinewood Derby Trophy Set">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1882812-pinewood-derby-trophy-set" target="_blank">Trophy Set (Customizable Text)</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@claytonjhigbee" target="_blank">claytonjhigbee</a></div>
+                <p>Remix of Troysterr's design with customizable Pack number text and an added "People's Choice" plaque.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/977534-pinewood-derby-trophies" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USb83537e899495a/design/2025-01-10_93cad199c8054.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Pinewood Derby Trophies">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/977534-pinewood-derby-trophies" target="_blank">7-Trophy Pack (No Supports)</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@TheDave3D" target="_blank">TheDave3D</a></div>
+                <p>Seven different trophy designs with no Pack info printed on them. Designed to print on their backs with no supports needed.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/2525566-pinewood-derby-trophies" target="_blank">
+                <img src="" alt="Pinewood Derby Trophies" onerror="this.parentElement.style.display='none'" style="background:#003f87;">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/2525566-pinewood-derby-trophies" target="_blank">Pinewood Derby Trophies</a></h3>
+                <div class="author">⭐ Our Design &mdash; by <a href="https://makerworld.com/en/@Venar303" target="_blank">the site curator</a></div>
+                <p>Complete modular trophy system for Cub Scout Pinewood Derby. Rank-specific badges (Tiger, Wolf, Bear, Webelos), silk+ metallic risers (gold/silver/bronze), optional weighted bases with tungsten pocket, real tire & wheel with customizable pack number. Pack-wide and den-level awards.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CUB SCOUT RANK BADGES -->
+<section class="category" id="rank-badges">
+    <h2>⚜️ Cub Scout Rank Badges</h2>
+    <p style="color: #666; margin-bottom: 1rem; font-size: 0.95rem;">Multi-color flat prints by <a href="https://makerworld.com/en/@marcb1387" target="_blank" style="color: #003f87;">marcb1387</a>. Great for display, awards, or trophy components.</p>
+    <div class="grid">
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/578610-cub-scout-lion-rank" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USc13a2e2f42275b/design/2024-08-08_1e85503d8baf3.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Lion Rank">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/578610-cub-scout-lion-rank" target="_blank">Lion Rank</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@marcb1387" target="_blank">marcb1387</a></div>
+                <p>Multi-color print: Inland Yellow, Inland Black, Elegoo Brown, Inland White.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/578614-cub-scout-tiger-rank" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USa91a056e4aab47/design/2024-08-08_fd3ba9784a21e.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Tiger Rank">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/578614-cub-scout-tiger-rank" target="_blank">Tiger Rank</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@marcb1387" target="_blank">marcb1387</a></div>
+                <p>Multi-color print: OVERTURE PLA Orange, Inland White, Inland Black, Elegoo Yellow.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/578623-cub-scout-wolf-rank" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US52c276e20d716a/design/2024-08-08_bf6f289771e71.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Wolf Rank">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/578623-cub-scout-wolf-rank" target="_blank">Wolf Rank</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@marcb1387" target="_blank">marcb1387</a></div>
+                <p>Multi-color print: OVERTURE Easy PLA Red, Inland Black, Inland White, Elegoo Yellow.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/578607-cub-scout-bear-rank" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US4eabd3f7fddf93/design/2024-08-08_95f441a28efef.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Bear Rank">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/578607-cub-scout-bear-rank" target="_blank">Bear Rank</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@marcb1387" target="_blank">marcb1387</a></div>
+                <p>Multi-color print: Elegoo Brown, Elegoo Yellow, Inland Black, 3DHojor Matte Light Blue.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/578618-cub-scout-webelos-rank" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US51db8d55d29dd/design/2024-08-08_da3d8af9fe988.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Webelos Rank">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/578618-cub-scout-webelos-rank" target="_blank">Webelos Rank</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@marcb1387" target="_blank">marcb1387</a></div>
+                <p>Multi-color print: OVERTURE Matte Light Brown, Elegoo Brown, OVERTURE Easy PLA Blue, Elegoo Yellow.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/578603-aol-cub-scout-rank" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US650ddbfb9b6b03/design/2024-08-08_4a1ae32c88ab6.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Arrow of Light Rank">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/578603-aol-cub-scout-rank" target="_blank">Arrow of Light Rank</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@marcb1387" target="_blank">marcb1387</a></div>
+                <p>Multi-color print: OVERTURE Matte Light Brown, Elegoo Yellow, OVERTURE Easy PLA Blue.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/580439-retired-bobcat-cub-scout-rank" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US9efaf9c6e74677/design/2024-08-09_1a101a54b0dda.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Bobcat Rank (Retired)">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/580439-retired-bobcat-cub-scout-rank" target="_blank">Bobcat Rank (Retired)</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@marcb1387" target="_blank">marcb1387</a></div>
+                <p>Multi-color print: Elegoo Yellow, Inland Black, OVERTURE Easy PLA Blue. The Bobcat rank was retired in 2024.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/580585-cub-scouts-logo" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USd6c6cd4bdbcd0f/design/2024-08-09_4a6d1ca3d3de9.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Cub Scouts Logo">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/580585-cub-scouts-logo" target="_blank">Cub Scouts Logo</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@marcb1387" target="_blank">marcb1387</a></div>
+                <p>Multi-color print: Inland White, OVERTURE Easy PLA Blue, Elegoo Yellow. Great for Pack awards and display.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CUB SCOUT RANK STATUES -->
+<section class="category" id="rank-statues">
+    <h2>🗿 Cub Scout Rank Statues</h2>
+    <p style="color: #666; margin-bottom: 1rem; font-size: 0.95rem;">3D scout figure statues by <a href="https://makerworld.com/en/@jkoppee" target="_blank" style="color: #003f87;">jkoppee</a>, painted in rank colors. Great for awards, cake toppers, or display.</p>
+    <div class="grid">
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/154251-cub-scout-statue-tiger" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US4ce40397719858/design/2024-01-23_ab63c3d75172a.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Tiger Statue">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/154251-cub-scout-statue-tiger" target="_blank">Tiger Statue</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@jkoppee" target="_blank">jkoppee</a></div>
+                <p>Cub Scout figure remixed for Tiger scouts. Model is already painted in profile for multi-color printing.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/154243-cub-scout-statue-wolf-rank" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US82991b07389bdd/design/2024-01-23_22484ebf5eeae.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Wolf Statue">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/154243-cub-scout-statue-wolf-rank" target="_blank">Wolf Statue</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@jkoppee" target="_blank">jkoppee</a></div>
+                <p>The original Cub Scout statue model that inspired the full rank set.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/154246-cub-scout-statue-bear" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USe04517b61d9c25/design/2024-01-23_6d5206c15c362.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Bear Statue">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/154246-cub-scout-statue-bear" target="_blank">Bear Statue</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@jkoppee" target="_blank">jkoppee</a></div>
+                <p>Cub Scout figure remixed for Bear scouts.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/154258-cub-scout-statue-webelos" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USc338e3ae146a68/design/2024-01-23_3a0b19206c91e.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Webelos Statue">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/154258-cub-scout-statue-webelos" target="_blank">Webelos Statue</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@jkoppee" target="_blank">jkoppee</a></div>
+                <p>Cub Scout figure remixed for Webelos scouts.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- WOGGLES & NECKERCHIEF SLIDES -->
+<section class="category" id="woggles">
+    <h2>🧣 Woggles &amp; Neckerchief Slides</h2>
+    <div class="grid">
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1016928-scout-woggle-twisted" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US7dd086cdfaba6f/design/2025-01-20_de2725338ba84.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Scout Woggle (Twisted)">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1016928-scout-woggle-twisted" target="_blank">Scout Woggle (Twisted)</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@chiglia" target="_blank">chiglia</a></div>
+                <p>Twisted rope-style neckerchief woggle. Clean design that prints quickly. Remix with PETG option for durability.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/849762-woggle-neckerchief-slides" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US17cef536a708b2/design/2024-12-04_c9e66f4e16354.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Woggle Neckerchief Slides">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/849762-woggle-neckerchief-slides" target="_blank">Woggle Neckerchief Slides</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@MamaBearEllen" target="_blank">WeaveTogether</a></div>
+                <p>Four different neckerchief slide designs. Print in multicolor with ABS or single color. Includes a plain single-color woggle option.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/2279134-scout-neckerchief-woggle-baloo-bear" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USb40183a6bd9806/design/10288188a9fdd444.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Scout Neckerchief Woggle - Baloo Bear">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/2279134-scout-neckerchief-woggle-baloo-bear" target="_blank">Scout Neckerchief Woggle - Baloo Bear</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@wingdesk" target="_blank">Wingdesk</a></div>
+                <p>Baloo-inspired neckerchief woggle associated with Cub Scouts. 20mm hole for standard neckerchiefs. Includes multicolor and single-color (for hand painting) print profiles.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- WOOD BADGE -->
+<section class="category" id="wood-badge">
+    <h2>🪵 Wood Badge</h2>
+    <div class="grid">
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1108710-customizeable-wood-badge-display-piece" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USf0bb0b12cd0331/design/2025-02-14_5937be0872a918.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Customizable Wood Badge Display Piece">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1108710-customizeable-wood-badge-display-piece" target="_blank">Customizable Wood Badge Display Piece</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@RevHazlett" target="_blank">RevHazlett</a></div>
+                <p>Customizable Wood Badge display piece with nameplate. Easy multicolor printing with minimal waste. Improved flush nameplate design.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1143541-wood-badge-critter-beads" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US422d65cbce0cc3/design/2025-02-23_8f8e91ae7018b.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Wood Badge Critter Beads">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1143541-wood-badge-critter-beads" target="_blank">Wood Badge Critter Beads</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@arronaf" target="_blank">arronaf</a></div>
+                <p>3D printed beads featuring all Wood Badge patrol critter animals.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1665567-wood-badge-critter-woggles" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USba80693beac4b1/design/2025-08-20_667a1790b0e628.jpeg?x-oss-process=image/resize,w_400/format,webp" alt="Wood Badge Critter Woggles (All 8)">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1665567-wood-badge-critter-woggles" target="_blank">Wood Badge Critter Woggles (All 8)</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@madshadow85" target="_blank">Kingmaker3D</a></div>
+                <p>Woggles for all 8 Wood Badge critter patrols. Two-part snap-fit design (front disk + back loop). Can print face up or face down for different looks.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1235192-wood-badge-beaver-woggle" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US482f383026a3bf/design/2025-03-21_f205c453ff4a.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Wood Badge Beaver Woggle">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1235192-wood-badge-beaver-woggle" target="_blank">Wood Badge Beaver Woggle</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@arronaf" target="_blank">arronaf</a></div>
+                <p>Beaver patrol woggle for Wood Badge.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1238654-wood-badge-bear-woggle" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US83c69db234b4fd/design/2025-03-22_fa067bc509b49.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Wood Badge Bear Woggle">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1238654-wood-badge-bear-woggle" target="_blank">Wood Badge Bear Woggle</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@arronaf" target="_blank">arronaf</a></div>
+                <p>Bear patrol woggle for Wood Badge.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/2080998-fox-woggle" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USff9cd879249d9d/design/2025-12-05_7315c9ef256c38.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Fox Woggle">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/2080998-fox-woggle" target="_blank">Fox Woggle</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@arronaf" target="_blank">arronaf</a></div>
+                <p>Fox patrol woggle for Wood Badge.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/2080953-antelope-woggle" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US89e0fd4e99d68c/design/2025-12-05_3697bd18c683d.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Antelope Woggle">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/2080953-antelope-woggle" target="_blank">Antelope Woggle</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@arronaf" target="_blank">arronaf</a></div>
+                <p>Antelope patrol woggle for Wood Badge.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/2080973-buffalo-woggle" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US6e8887781b2085/design/2025-12-05_085e772fb434b8.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Buffalo Woggle">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/2080973-buffalo-woggle" target="_blank">Buffalo Woggle</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@arronaf" target="_blank">arronaf</a></div>
+                <p>Buffalo patrol woggle for Wood Badge.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/2080965-bobwhite-woggle" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US3598890727222a/design/2025-12-05_85eadac4d119a8.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Bobwhite Woggle">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/2080965-bobwhite-woggle" target="_blank">Bobwhite Woggle</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@arronaf" target="_blank">arronaf</a></div>
+                <p>Bobwhite patrol woggle for Wood Badge.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CEREMONIES & MILESTONES -->
+<section class="category" id="ceremonies">
+    <h2>🌉 Ceremonies &amp; Milestones</h2>
+    <div class="grid">
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/176461-arrow-of-light-bridge-cub-scouts" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/DSM00000000176461/design/2024-02-08_af2c61accb085.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Arrow of Light Bridge">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/176461-arrow-of-light-bridge-cub-scouts" target="_blank">Arrow of Light Bridge</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@appleseed" target="_blank">appleseed</a></div>
+                <p>AOL bridge for cake toppers, table settings, or gifts. Sized at 150mm x 65mm with customizable font.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/2379343-arrow-of-light-w-border-cross-over-cub-scouts-bsa" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US62678cd6abd612/design/9960828bb072a8f0.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Arrow of Light w/ Border">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/2379343-arrow-of-light-w-border-cross-over-cub-scouts-bsa" target="_blank">Arrow of Light w/ Border</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@user_91558917" target="_blank">Paul</a></div>
+                <p>Arrow of Light logo with border, designed to be glued onto a plaque for the Arrow of Light Award. Adds color to laser-engraved plaques. Can be customized with names, Pack numbers, etc.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SKILLS & CAMPING -->
+<section class="category" id="skills-camping">
+    <h2>🏕️ Skills &amp; Camping</h2>
+    <div class="grid">
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1660783-essential-knots-card-pack-1-customizable" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US1dcdd78a3d907a/design/6452f50346685502.png?x-oss-process=image/resize,w_1000/format,webp" alt="Essential Knots Card Pack">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1660783-essential-knots-card-pack-1-customizable" target="_blank">Essential Knots Card Pack</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@gonvieira" target="_blank">OkToPuS</a></div>
+                <p>9 essential knots: Figure 8, Slip Knot, Overhand Loop, Sheet Bend, Carrick Bend, Reef Knot, Stevedore Stopper, Overhand Knot, and Bowline. Customizable text on each card.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1774654-camp-fire-kit-card" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USf9b1119eb8500a/design/2025-09-07_5c3bff5437d34.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Camp Fire Kit Card">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1774654-camp-fire-kit-card" target="_blank">Camp Fire Kit Card</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@Spifer" target="_blank">Spifer</a></div>
+                <p>A snap-together campfire model on a card. Simple enough for smaller hands. Works great as an activity station at Pack events.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/18694-bidon-for-bike-tools-new-cap-extender" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/DSM00000000018694/design/2023-09-24_zjj2ew20aa4i.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Bidon for Bike Tools">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/18694-bidon-for-bike-tools-new-cap-extender" target="_blank">Bidon for Bike Tools</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@user_1786307555" target="_blank">Tom V&iacute;t</a></div>
+                <p>Printable tool holder that mounts to a standard bike water bottle cage. Holds necessary tools for bike rides and cycling activities.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- DECOR & DISPLAY -->
+<section class="category" id="decor">
+    <h2>🖼️ Decor &amp; Display</h2>
+    <div class="grid">
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/451898-cub-scout-light-box" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US8b62b7e2359336/design/2024-05-02_eff6d4291a45c.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Cub Scout Light Box">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/451898-cub-scout-light-box" target="_blank">Cub Scout Light Box</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@RevHazlett" target="_blank">RevHazlett</a></div>
+                <p>Backlit light box featuring the Cub Scout logo. Four colors max, single-AMS friendly. Great for dens, recognition dinners, or silent auctions.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/451893-scouts-bsa-light-box" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USd7f9c8ba91afd9/design/2024-05-02_9eefa1c89a1f7.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Scouts BSA Light Box">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/451893-scouts-bsa-light-box" target="_blank">Scouts BSA Light Box</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@RevHazlett" target="_blank">RevHazlett</a></div>
+                <p>Backlit light box featuring the Scouts BSA logo. Four colors max, single-AMS friendly. Great for troops, recognition dinners, or silent auctions.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1140003-the-lightchaser" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US6a9d0cb86cbf0a/design/2025-02-22_865a1d3c68783.jpg?x-oss-process=image/resize,w_400/format,webp" alt="The Lightchaser">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1140003-the-lightchaser" target="_blank">The Lightchaser</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@RevHazlett" target="_blank">RevHazlett</a></div>
+                <p>Scouting-themed sculpture printed in PETG with lighting effects. A display piece for scout leaders or as an award.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ACTIVITIES & FUN -->
+<section class="category" id="activities">
+    <h2>🎯 Activities &amp; Fun</h2>
+    <div class="grid">
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/628601-high-speed-propeller-launcher" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US4ab2c268d3451c/design/2024-09-25_6b6a871b0c343.gif?x-oss-process=image/resize,w_1000/format,webp" alt="High Speed Propeller Launcher">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/628601-high-speed-propeller-launcher" target="_blank">High Speed Propeller Launcher</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@LukasHannert" target="_blank">Lukas Hannert</a></div>
+                <p>Pull-string propeller launcher with multiple print profiles and customization options. Great outdoor activity for Scouts.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/789146-thanksgiving-turkey-keychain-toy-w-hidden-feet" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US14eaf959f0c6b1/design/2025-11-04_f02416f4fab26.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Turkey Keychain/Toy">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/789146-thanksgiving-turkey-keychain-toy-w-hidden-feet" target="_blank">Turkey Keychain/Toy</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@ValeriaMomo" target="_blank">Valeria Momo &amp; Mattia</a></div>
+                <p>Turkey model in four styles (keychain and toy, with or without feet). No supports or assembly required.</p>
+                <div class="note">💡 Tip: These make great popsicle stick catapult ammo!</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/980989-fragment-square-planetary-gears-fidget-spinner" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USffbcf197c67b18/design/2025-01-11_038b676dc540a.gif?x-oss-process=image/resize,w_1000/format,webp" alt="Square Planetary Gears Fidget Spinner">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/980989-fragment-square-planetary-gears-fidget-spinner" target="_blank">Square Planetary Gears Fidget Spinner</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@gmanprojects" target="_blank">G-Man Projects</a></div>
+                <p>Print-in-place square gear fidget spinner. Buttery smooth right off the print bed. Fun hands-on STEM demo.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/504525-impossible-pyramid-passthrough" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USdc4a326a7290d0/design/2024-06-21_e542bb0b40c8f.gif?x-oss-process=image/resize,w_1000/format,webp" alt="Impossible Pyramid Passthrough">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/504525-impossible-pyramid-passthrough" target="_blank">Impossible Pyramid Passthrough</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@RJDesign" target="_blank">RJ Design</a></div>
+                <p>A 4-sided pyramid where the "male" thread seems to defy physics by passing through the slightly larger "female" part. Great conversation starter and STEM demo.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <a class="card-img" href="https://makerworld.com/en/models/1235338-scouting-america-world-crest-logo-cookie-cutter" target="_blank">
+                <img src="https://makerworld.bblmw.com/makerworld/model/US24423643fc178f/design/2025-03-21_557e902f4a19a8.jpg?x-oss-process=image/resize,w_400/format,webp" alt="Scouting America World Crest Logo Cookie Cutter">
+            </a>
+            <div class="card-body">
+                <h3><a href="https://makerworld.com/en/models/1235338-scouting-america-world-crest-logo-cookie-cutter" target="_blank">Scouting America World Crest Logo Cookie Cutter</a></h3>
+                <div class="author">by <a href="https://makerworld.com/en/@RevHazlett" target="_blank">RevHazlett</a></div>
+                <p>Fondant cutter and embosser from the Scouting America World Crest logo. Makes a 3.5" square decoration or cookie. Two embossing depths included.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>Curated for Cub Scout leaders with 3D printers. All models hosted on <a href="https://makerworld.com" target="_blank" style="color: #003f87;">MakerWorld</a>.</p>
+</footer>
+
+</body>
+</html>
